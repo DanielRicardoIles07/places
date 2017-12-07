@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import Home from './pages/Home';
 import  './App.css';
+
+import MyAppBar from './components/navigation/MyAppBar';
 
 class App extends Component {
 
@@ -15,9 +16,8 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-
-        <Home></Home>
-
+      <MyAppBar/>
+        {this.props.children}
       </MuiThemeProvider>
     );
   }
