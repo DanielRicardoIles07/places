@@ -44,6 +44,7 @@ export default class Login extends React.Component {
                     <Route path="/signup" exact render={()=>{
                         return(
                           <div>
+                          <Link to="/" style={{'padding': '10px'}}>Inicio</Link>
                             <Link to="/login" style={{'marginRight':'1em', 'textDecoration': 'none'}}>Ya tengo Cuenta</Link>
                             <RaisedButton label="Crear Cuenta" primary={true}/>
                           </div>
