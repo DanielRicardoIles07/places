@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TransitionGroup from 'react-transition-group/TransitionGroup';
+import CSSTransition from 'react-transition-group/CSSTransition';
+import {withRouter} from 'react-router-dom';
 
 import  './App.css';
 
 import MyAppBar from './components/navigation/MyAppBar';
+
 
 class App extends Component {
 
@@ -16,11 +20,15 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-      <MyAppBar/>
-        {this.props.children}
+        <MyAppBar/>
+        <TransitionGroup>
+          <CSSTransition classNames="left-out" timeout={300} key={this.props.location.key}>
+            {this.props.children}
+          </CSSTransition>
+        </TransitionGroup>
       </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

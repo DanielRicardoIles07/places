@@ -11,6 +11,7 @@ import data from '../requests/places';
 
 import TransitionGroup from 'react-transition-group/TransitionGroup';
 
+import {Link} from 'react-router-dom';
 
 export default class Home extends React.Component{
 
@@ -46,9 +47,9 @@ export default class Home extends React.Component{
           <Container style={{"width":"80%", "margin":"0 auto"}}>
             <div className="Header-main">
               <Title></Title>
-
-              <RaisedButton label="Crear cuenta gratuita" primary={true} />
-
+              <Link to="/signup">
+                <RaisedButton label="Crear cuenta gratuita" primary={true} />
+              </Link>
               <img className="Header-illustration" src={process.env.PUBLIC_URL + '/images/place-3.gif'} />
             </div>
             <div>
