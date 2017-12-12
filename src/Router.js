@@ -11,19 +11,20 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Place from './pages/Place';
 import App from './App';
+import {connect} from 'react-redux';
 
 const userSignedIn = false;
-export default class Router extends React.Component{
+class Router extends React.Component{
 
   signedInRoutes(){
-    if (true) {
+    if (this.props.user.jwt) {
       return(
         <Route path="/new" render={()=><h1>Welcome</h1>} />
       );
     }
   }
   home(){
-    if (userSignedIn) return Dashboard;
+    if (this.props.user.jwt) return Dashboard;
     return Home;
   }
 
@@ -43,3 +44,9 @@ export default class Router extends React.Component{
     );
   }
 }
+function mapStateToProps(state, ownProps){
+  return {
+    user: state.user
+  }
+}
+export default connect (mapStateToProps)(Router);

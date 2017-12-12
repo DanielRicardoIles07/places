@@ -26,7 +26,6 @@ export  default class Dashboard extends React.Component{
           places: jsonR.docs
         })
     })
-
   }
 
   places(){
