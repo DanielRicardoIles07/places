@@ -36,7 +36,7 @@ export default class Home extends React.Component{
 
   hidePlace(place){
     this.setState({
-      places: this.state.places.filter(el => el != place)
+      places: this.state.places.filter(el => el !== place)
     })
   }
 
@@ -50,7 +50,7 @@ export default class Home extends React.Component{
               <Link to="/signup">
                 <RaisedButton label="Crear cuenta gratuita" primary={true} />
               </Link>
-              <img className="Header-illustration" src={process.env.PUBLIC_URL + '/images/place-3.gif'} />
+              <img alt={"place-3-gif"} className="Header-illustration" src={process.env.PUBLIC_URL + "/images/place-3.gif"}/>
             </div>
             <div>
               <Benefits/>

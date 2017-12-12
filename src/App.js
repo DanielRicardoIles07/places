@@ -12,16 +12,18 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    console.log(props);
+    this.goHome = this.goHome.bind(this);
   }
 
-
+goHome(){
+  this.props.history.push('/');
+}
 
   render() {
     return (
       <MuiThemeProvider>
         <div>
-          <MyAppBar/>
+          <MyAppBar goHome={this.goHome}/>
           <TransitionGroup>
             <CSSTransition classNames="left-out" timeout={300} mountOnEnter={true} unmountOnExit={true} key={this.props.location.pathname.split('/')[1]}>
               {this.props.children}

@@ -8,6 +8,7 @@ function getPlace(slug){
       return data.json();
     }).catch(console.log)
 }
+
 export {getPlaces, getPlace};
 
 export default {
