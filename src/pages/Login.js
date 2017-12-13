@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {login, signUp} from '../requests/auth';
 import {connect} from 'react-redux';
 import * as actions from '../actions/userActions';
+import {push} from 'react-router-redux';
 
 import{
 
@@ -27,6 +28,8 @@ class Login extends React.Component {
     }
     login(credentials).then(data => {
       this.props.dispatch(actions.login(data.jwt));
+      this.props.dispatch(actions.LoadUser(data.user));
+      this.props.dispatch(push('/'))
     }).catch(console.log);
   }
 
@@ -45,6 +48,14 @@ class Login extends React.Component {
             <Container>
               <div style={{'textAlign': 'left'}}>
                 <Title />
+                <Route path="/login" exact render={()=>
+                    <small>Iniciar Sesion</small>
+                  }>
+                </Route>
+                <Route path="/signup" exact render={()=>
+                    <small>Registrarme</small>
+                  }>
+                </Route>
                 <TextField
                   floatingLabelText="Correo Electronico"
                   type="email"

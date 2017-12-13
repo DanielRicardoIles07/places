@@ -5,10 +5,16 @@ import registerServiceWorker from './registerServiceWorker';
 import Router from './Router';
 import configureStore from './store/configureStore';
 import {Provider} from 'react-redux';
+import createHistory from 'history/createBrowserHistory'
 
-const store = configureStore();
+import {routerMiddleware} from 'react-router-redux';
+const history = createHistory();
+
+const middleware = routerMiddleware(history);
+
+const store = configureStore(middleware);
 
 ReactDOM.render(
-  <Provider store={store}><Router /></Provider>, 
+  <Provider store={store}><Router history={history}/></Provider>,
   document.getElementById('root'));
 registerServiceWorker();
